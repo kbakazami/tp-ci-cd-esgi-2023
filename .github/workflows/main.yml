@@ -1,7 +1,7 @@
 name: Symfony CI
 on: 
-  - push:
-      branche: develop
+  push:
+    branche: develop
 jobs:
   test: 
   runs-on: ubuntu-latest
