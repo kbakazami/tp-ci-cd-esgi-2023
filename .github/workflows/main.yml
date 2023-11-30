@@ -1,0 +1,10 @@
+name: Symfony CI
+on: 
+  - push:
+      branche: develop
+jobs:
+  test: 
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v3
+    - run: composer install
