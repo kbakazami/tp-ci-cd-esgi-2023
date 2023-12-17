@@ -7,5 +7,11 @@ jobs:
   test-ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: composer install
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Unit Test
+        run: php bin/phpunit --stop-on-failure
