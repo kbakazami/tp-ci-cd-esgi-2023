@@ -1,5 +1,7 @@
 name: Symfony CI
 on:
+  release:
+    types: [ created ]
   pull_request:
     types: [ opened ]
   push:
