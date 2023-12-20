@@ -1,0 +1,18 @@
+name: Symfony CI
+on:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  test-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Unit Test
+        run: php bin/phpunit --stop-on-failure
