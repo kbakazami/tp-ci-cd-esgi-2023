@@ -3,8 +3,6 @@ on:
   push:
   pull_request:
     types: [ opened ]
-  pull_request_review:
-    types: [ edited ]
 jobs:
   test-ci:
     runs-on: ubuntu-20.04
