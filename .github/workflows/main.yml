@@ -1,6 +1,5 @@
 name: Symfony CI
 on:
-  push:
   pull_request:
     types: [ opened ]
 jobs:
