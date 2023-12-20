@@ -1,9 +1,7 @@
 name: Symfony CI
 on:
-  push:
-    branches:
-      - main
-      - develop
+  pull_request:
+    types: [ opened ]
 jobs:
   test-ci:
     runs-on: ubuntu-20.04
