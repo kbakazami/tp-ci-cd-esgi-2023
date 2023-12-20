@@ -1,5 +1,6 @@
 name: Symfony CI
 on:
+  push:
   pull_request:
     types: [ opened ]
   pull_request_review:
