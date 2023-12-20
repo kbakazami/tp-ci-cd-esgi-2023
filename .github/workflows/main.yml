@@ -2,8 +2,6 @@ name: Symfony CI
 on:
   pull_request:
     types: [ opened ]
-  pull_request_review:
-    types: [ submitted ]
 jobs:
   test-ci:
     runs-on: ubuntu-20.04
