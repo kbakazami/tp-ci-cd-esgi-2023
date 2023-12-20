@@ -1,11 +1,13 @@
 name: Symfony CI
-on: 
+on:
+  release:
+    types: [ created ]
+  pull_request:
+    types: [ opened ]
   push:
-    branches:
-      - develop
 jobs:
   test-ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -15,3 +17,9 @@ jobs:
 
       - name: Unit Test
         run: php bin/phpunit --stop-on-failure
+
+      - name: Code sniffer
+        run: php vendor/bin/phpcs src/ tests/ templates/
+
+      - name: Code beautifier
+        run: php vendor/bin/phpcbf src/ tests/ templates/
