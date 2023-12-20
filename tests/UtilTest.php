@@ -12,6 +12,6 @@ class UtilTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h2', 'Home');
+        $this->assertSelectorTextContains('h1', 'Home');
     }
 }
