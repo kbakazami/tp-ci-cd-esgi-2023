@@ -17,3 +17,6 @@ jobs:
 
       - name: Code sniffer
         run: php vendor/bin/phpcs src/ tests/ templates/
+        
+      - name: Code beautifier
+        run: php vendor/bin/phpcbf src/ tests/ templates/
