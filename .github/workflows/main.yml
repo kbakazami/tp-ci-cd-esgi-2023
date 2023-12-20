@@ -2,6 +2,8 @@ name: Symfony CI
 on:
   pull_request:
     types: [ opened ]
+  pull_request_review:
+    types: [ submitted ]
 jobs:
   test-ci:
     runs-on: ubuntu-20.04
@@ -18,6 +20,6 @@ jobs:
 
       - name: Code sniffer
         run: php vendor/bin/phpcs src/ tests/ templates/
-        
+
       - name: Code beautifier
         run: php vendor/bin/phpcbf src/ tests/ templates/
