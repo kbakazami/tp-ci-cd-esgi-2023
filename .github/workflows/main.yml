@@ -16,3 +16,6 @@ jobs:
 
       - name: Unit Test
         run: php bin/phpunit --stop-on-failure
+
+      - name: Code sniffer
+        run: php vendor/bin/phpcs src/ tests/ templates/
