@@ -51,3 +51,18 @@ jobs:
           files: |
             LICENSE.txt
             *.jar
+
+  create-tagged-release:
+    runs-on: ubuntu-20.04
+    needs: test-ci
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Create tagged release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} - VERSION ${tag#v}" \
+              --generate-notes
