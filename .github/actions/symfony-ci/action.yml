@@ -1,15 +1,20 @@
 name: Runs Symfony commands
+description: Runs the needed commands to setup the project
 runs:
   using: "composite"
   steps:
     - name: Install Composer dependencies
       run: composer install
+      shell: bash
 
     - name: Unit Test
       run: php bin/phpunit --stop-on-failure
+      shell: bash
 
     - name: Code sniffer
       run: php vendor/bin/phpcs src/ tests/ templates/
+      shell: bash
 
     - name: Code beautifier
       run: php vendor/bin/phpcbf src/ tests/ templates/
+      shell: bash
