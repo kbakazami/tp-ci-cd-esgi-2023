@@ -28,7 +28,6 @@ jobs:
     runs-on: ubuntu-20.04
     needs: test-ci
     if: github.ref == 'refs/heads/main'
-    environment: production
     steps:
       - name: Build
         run: php bin/console cache:clear --env=prod --no-debug --no-warmup
