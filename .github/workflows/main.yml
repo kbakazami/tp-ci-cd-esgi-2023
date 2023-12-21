@@ -28,12 +28,9 @@ jobs:
     runs-on: ubuntu-20.04
     needs: test-ci
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install Composer dependencies
-        run: composer install
-
+      - name: Test use action
+        uses: action/tp-ci-cd-esgi-2023
+        
       - name: Check php bin/console version
         run: php bin/console -V
 

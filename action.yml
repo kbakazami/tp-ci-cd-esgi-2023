@@ -1,0 +1,18 @@
+name: Symfony CI
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install Composer dependencies
+      run: composer install
+
+    - name: Unit Test
+      run: php bin/phpunit --stop-on-failure
+
+    - name: Code sniffer
+      run: php vendor/bin/phpcs src/ tests/ templates/
+
+    - name: Code beautifier
+      run: php vendor/bin/phpcbf src/ tests/ templates/
