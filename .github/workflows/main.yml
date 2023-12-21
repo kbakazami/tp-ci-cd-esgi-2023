@@ -23,3 +23,21 @@ jobs:
 
       - name: Code beautifier
         run: php vendor/bin/phpcbf src/ tests/ templates/
+
+  create-prerelease:
+    runs-on: ubuntu-20.04
+    needs: test-ci
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Build
+        run: php bin/console cache:clear --env=prod --no-debug --no-warmup
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            LICENSE.txt
+            *.jar
