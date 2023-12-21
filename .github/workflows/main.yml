@@ -24,6 +24,12 @@ jobs:
       - name: Code beautifier
         run: php vendor/bin/phpcbf src/ tests/ templates/
 
+  test-symfony-console:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check php bin/console version
+        run: php bin/console -V
+
   create-prerelease:
     runs-on: ubuntu-20.04
     needs: test-ci
