@@ -2,9 +2,6 @@ name: Runs Symfony commands
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
     - name: Install Composer dependencies
       run: composer install
 

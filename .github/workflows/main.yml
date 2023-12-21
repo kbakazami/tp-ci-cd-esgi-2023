@@ -28,6 +28,9 @@ jobs:
     runs-on: ubuntu-20.04
     needs: test-ci
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Test use action
         uses: ./.github/actions/symfony-ci
 
