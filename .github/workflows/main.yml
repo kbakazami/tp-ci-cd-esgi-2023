@@ -29,8 +29,8 @@ jobs:
     needs: test-ci
     steps:
       - name: Test use action
-        uses: action/tp-ci-cd-esgi-2023
-        
+        uses: ./.github/actions/symfony-ci
+
       - name: Check php bin/console version
         run: php bin/console -V
 
