@@ -12,17 +12,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Composer dependencies
-        run: composer install
-
-      - name: Unit Test
-        run: php bin/phpunit --stop-on-failure
-
-      - name: Code sniffer
-        run: php vendor/bin/phpcs src/ tests/ templates/
-
-      - name: Code beautifier
-        run: php vendor/bin/phpcbf src/ tests/ templates/
+      - name: Use composite
+        uses: ./.github/actions/symfony-ci
 
   test-symfony-console:
     runs-on: ubuntu-20.04
@@ -31,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Test use action
+      - name: Use composite
         uses: ./.github/actions/symfony-ci
 
       - name: Check php bin/console version
@@ -42,6 +33,12 @@ jobs:
     needs: test-ci
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use composite
+        uses: ./.github/actions/symfony-ci
+
       - name: Build
         run: php bin/console cache:clear --env=prod --no-debug --no-warmup
 
