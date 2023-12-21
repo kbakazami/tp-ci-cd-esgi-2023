@@ -26,6 +26,7 @@ jobs:
 
   test-symfony-console:
     runs-on: ubuntu-20.04
+    needs: test-ci
     steps:
       - name: Check php bin/console version
         run: php bin/console -V
