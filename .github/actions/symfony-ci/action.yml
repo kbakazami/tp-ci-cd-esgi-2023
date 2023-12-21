@@ -1,4 +1,4 @@
-name: Symfony CI
+name: Runs Symfony commands
 runs:
   using: "composite"
   steps:
